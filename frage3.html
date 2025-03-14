@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frage 3</title>
+    <link rel="icon" href="favicon/favicon.ico" type="image/x-icon">
+    <style>
+        @font-face {
+            font-family: 'Windows95Font';
+            src: url('fonts/W95FA.otf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Windows95Font', sans-serif;
+            background-color: #000;
+            color: #640d0d;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+        }
+
+        .question-box {
+            font-size: 2.8em;
+            padding: 50px 120px;
+            border: 3px solid #640d0d;
+            background-color: transparent;
+            margin-bottom: 60px;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            max-width: 800px;
+            background: 
+                url('gifs/cross.gif') no-repeat left center, 
+                url('gifs/cross.gif') no-repeat right center;
+            background-size: 90px;
+            background-position: 5% center, 95% center;
+        }
+
+        .bottom-blood {
+            position: absolute;
+            bottom: -35px;
+            left: 0;
+            width: 100%;
+            height: 35px;
+            background: url('gifs/blood.gif') no-repeat center center;
+            background-size: cover;
+        }
+
+        .answer-option {
+            display: block;
+            font-size: 2.3em;
+            padding: 18px 35px;
+            color: #640d0d;
+            border: 3px solid #640d0d;
+            text-decoration: none;
+            margin-top: 25px;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 2em;
+            padding: 10px 20px;
+            color: #640d0d;
+            border: 3px solid #640d0d;
+            text-decoration: none;
+            background-color: transparent;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border: 3px solid #640d0d;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .popup img {
+            width: 500px;
+            height: auto;
+            display: block;
+            position: relative;
+        }
+
+        .popup .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            background: white;
+            border: 2px solid #640d0d;
+            padding: 5px 10px;
+            border-radius: 5px;
+            z-index: 1001;
+        }
+
+        .popup .image-link {
+            display: block;
+            width: 100%;
+            height: 50%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        .answer-option:hover,
+        .back-button:hover {
+            background-color: #640d0d98;
+            color: rgb(0, 0, 0); /* Textfarbe wird weiß */
+        }
+        @media (max-width: 600px) {
+            .title {
+                font-size: 2.3em;
+            }
+            .question-box {
+                font-size: 2.3em;
+                padding: 45px 100px;
+            }
+            .answer-option {
+                font-size: 2.1em;
+                padding: 15px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="javascript:history.back()" class="back-button">Zurück</a>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup-ad">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <div style="position: relative;">
+            <img src="images/ad4.png" alt="Werbung">
+            <a href="ow.html" class="image-link"></a>
+        </div>
+    </div> 
+    <div class="title">Frage 3:</div>
+    
+    <div class="question-box">
+        <div class="top-fire"></div>
+        
+        Söder hat einfach keine Lust, dass wer der nächste Kanzler von Deutschland wird?
+        
+        <div class="bottom-blood"></div>
+    </div>
+
+    <a href="falsch.html" class="answer-option">A: Olaf Scholz</a>
+    <a href="falsch.html" class="answer-option">B: Herr Habeck</a>
+    <a href="richtig3.html" class="answer-option">C: Friedrich Merz</a>
+<script>
+    function showPopup() {
+        document.getElementById("popup-ad").style.display = "block";
+    }
+
+    function closePopup() {
+        document.getElementById("popup-ad").style.display = "none";
+    }
+    setTimeout(showPopup, 5000);
+</script>
+</body>
+</html>

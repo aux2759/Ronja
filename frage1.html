@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frage 1</title>
+    <link rel="icon" href="favicon/favicon.ico" type="image/x-icon">
+    <style>
+        @font-face {
+            font-family: 'Windows95Font';
+            src: url('fonts/W95FA.otf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Windows95Font', sans-serif;
+            background-color: #000;
+            color: #640d0d;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+        }
+
+        .question-box {
+            font-size: 2.8em;
+            padding: 50px 120px;
+            border: 3px solid #640d0d;
+            background-color: transparent;
+            margin-bottom: 60px;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            max-width: 800px;
+            background: 
+                url('gifs/cross.gif') no-repeat left center, 
+                url('gifs/cross.gif') no-repeat right center;
+            background-size: 90px;
+            background-position: 5% center, 95% center;
+        }
+
+        .bottom-blood {
+            position: absolute;
+            bottom: -35px;
+            left: 0;
+            width: 100%;
+            height: 35px;
+            background: url('gifs/blood.gif') no-repeat center center;
+            background-size: cover;
+        }
+
+        .answer-option {
+            display: block;
+            font-size: 2.3em;
+            padding: 18px 35px;
+            color: #640d0d;
+            border: 3px solid #640d0d;
+            text-decoration: none;
+            margin-top: 25px;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 2em;
+            padding: 10px 20px;
+            color: #640d0d;
+            border: 3px solid #640d0d;
+            text-decoration: none;
+            background-color: transparent;
+        }
+        .answer-option:hover,
+        .back-button:hover {
+            background-color: #640d0d98;
+            color: rgb(0, 0, 0); /* Textfarbe wird weiß */
+        }
+        @media (max-width: 600px) {
+            .title {
+                font-size: 2.3em;
+            }
+            .question-box {
+                font-size: 2.3em;
+                padding: 45px 100px;
+            }
+            .answer-option {
+                font-size: 2.1em;
+                padding: 15px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="javascript:history.back()" class="back-button">Zurück</a>
+    
+    <div class="title">Frage 1:</div>
+    
+    <div class="question-box">
+        <div class="top-fire"></div>
+        
+        Wieso wurde "Larry" als Kind aus seinem Haus geworfen? Weil er...
+        
+        <div class="bottom-blood"></div>
+    </div>
+
+    <a href="falsch.html" class="answer-option">A: seinen Vater in den "penar explosion chamber" steckte</a>
+    <a href="falsch.html" class="answer-option">B: auf den kitchen floor gejorked hat</a>
+    <a href="richtig1.html" class="answer-option">C: nicht jorken konnte</a>
+</body>
+</html>

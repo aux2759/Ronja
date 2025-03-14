@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frage 2</title>
+    <link rel="icon" href="favicon/favicon.ico" type="image/x-icon">
+    <style>
+        @font-face {
+            font-family: 'Windows95Font';
+            src: url('fonts/W95FA.otf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Windows95Font';
+            background-color: #000;
+            color: #640d0d;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+        }
+        .question-box {
+            font-size: 2.8em;
+            padding: 50px 120px;
+            border: 3px solid #640d0d;
+            background-color: transparent;
+            margin-bottom: 60px;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            max-width: 800px;
+            background: 
+                url('gifs/cross.gif') no-repeat left center, 
+                url('gifs/cross.gif') no-repeat right center;
+            background-size: 90px;
+            background-position: 5% center, 95% center;
+        }
+
+        .bottom-blood {
+            position: absolute;
+            bottom: -35px;
+            left: 0;
+            width: 100%;
+            height: 35px;
+            background: url('gifs/blood.gif') no-repeat center center;
+            background-size: cover;
+        }
+
+        .answers {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .answer-option {
+            font-size: 2.3em;
+            padding: 18px 35px;
+            color: #640d0d;
+            border: 3px solid #640d0d;
+            text-decoration: none;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .answer-option input[type="checkbox"] {
+            width: 30px;
+            height: 30px;
+            border: 3px solid #640d0d;
+            background-color: transparent;
+            appearance: none;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .answer-option input[type="checkbox"]:checked {
+            background-color: #640d0d;
+            border: 3px solid #640d0d;
+        }
+
+        .submit-button {
+            margin-top: 30px;
+            font-size: 2.5em;
+            padding: 15px 40px;
+            font-family: 'Windows95Font';
+            color: #640d0d;
+            border: 3px solid #640d0d;
+            background-color: transparent;
+            cursor: pointer;
+            position: relative; /* Damit wir das Blut-GIF korrekt platzieren können */
+        }
+
+        .submit-blood {
+            position: relative;
+            left: 0;
+            width: 100%;
+            height: 35px;
+            background: url('gifs/blood.gif') no-repeat center center;
+            background-size: cover;
+            opacity: 30%;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 2em;
+            padding: 10px 20px;
+            color: #640d0d;
+            border: 3px solid #640d0d;
+            text-decoration: none;
+            background-color: transparent;
+        }
+
+        .container::before {
+            content: ''; /* Leeres Pseudo-Element */
+            position: absolute;
+            top: -60px; /* GIF bleibt am oberen Rand */
+            left: 0;
+            right: 0;
+            height: 60px; /* Höhe des GIFs */
+            background: url('gifs/fire.gif') no-repeat center bottom;
+            background-size: cover; /* GIF wird über die gesamte Breite des Containers gestreckt */
+            z-index: -1; /* GIF bleibt hinter dem Text */
+        }
+
+        @media (max-width: 600px) {
+            .title {
+                font-size: 3em;
+            }
+            .question-box {
+                font-size: 2.3em;
+                padding: 45px 100px;
+            }
+            .answer-option {
+                font-size: 2.1em;
+                padding: 15px 30px;
+            }
+            .answer-option input[type="checkbox"] {
+                width: 25px;
+                height: 25px;
+            }
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border: 3px solid #640d0d;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .popup img {
+            width: 500px;
+            height: auto;
+            display: block;
+            position: relative;
+        }
+
+        .popup .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            background: white;
+            border: 2px solid #640d0d;
+            padding: 5px 10px;
+            border-radius: 5px;
+            z-index: 1001;
+        }
+
+        .popup .image-link {
+            display: block;
+            width: 100%;
+            height: 50%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .answer-option:hover,
+        .back-button:hover,
+        .submit-button:hover {
+            background-color: #640d0d98;
+            color: rgb(0, 0, 0); /* Textfarbe wird weiß */
+        }
+    </style>
+</head>
+<body>
+    <a href="javascript:history.back()" class="back-button">Zurück</a>
+    
+    <div class="title">Frage 2:</div>
+    
+    <div class="question-box">
+        Welche Beatles WOLLTEN aufs Dach? (Mehrere richtige Antworten)
+        <div class="bottom-blood"></div>
+    </div>
+
+    <form id="quizForm">
+        <div class="answers">
+            <label class="answer-option"><input type="checkbox" name="answer" value="A"> A: John</label>
+            <label class="answer-option"><input type="checkbox" name="answer" value="B"> B: Paul</label>
+            <label class="answer-option"><input type="checkbox" name="answer" value="C"> C: George</label>
+            <label class="answer-option"><input type="checkbox" name="answer" value="D"> D: Ringo</label>
+        </div>
+    </form>
+
+    <div class="container">
+        <button type="button" class="submit-button" onclick="checkAnswer()">Fertig?</button>
+        <div class="submit-blood"></div> <!-- Blut GIF für den Submit Button -->
+    </div>
+
+<div class="overlay" id="overlay"></div>
+<div class="popup" id="popup-ad">
+    <span class="close-btn" onclick="closePopup()">&times;</span>
+    <div style="position: relative;">
+        <img src="images/ad1.jpg" alt="Werbung">
+        <a href="hotvamps.html" class="image-link"></a>
+    </div>
+</div>
+
+    <script>
+        function checkAnswer() {
+            const correctAnswers = ["A", "B", "D"];
+            const selectedAnswers = Array.from(document.querySelectorAll('input[name="answer"]:checked'))
+                                       .map(input => input.value);
+            if (selectedAnswers.length === correctAnswers.length && selectedAnswers.every(val => correctAnswers.includes(val))) {
+                window.location.href = "richtig2.html";
+            } else {
+                window.location.href = "falsch.html";
+            }
+        }
+
+        function showPopup() {
+            document.getElementById("popup-ad").style.display = "block";
+        }
+
+        function closePopup() {
+            document.getElementById("popup-ad").style.display = "none";
+        }
+        setTimeout(showPopup, 3000);
+    </script>
+</body>
+</html>

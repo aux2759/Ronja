@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ow</title>
+    <link rel="icon" href="favicon/favicon.ico" type="image/x-icon">
+    <style>
+        @font-face {
+            font-family: 'Windows95Font';
+            src: url('fonts/W95FA.otf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+            text-align: center;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 2em;
+            font-family: 'Windows95Font';
+            padding: 10px 20px;
+            color: #640d0d;
+            border: 3px solid #640d0d;
+            text-decoration: none;
+            background-color: transparent;
+        }
+
+        .back-button:hover {
+            background-color: #640d0d98;
+            color: rgb(0, 0, 0); /* Textfarbe wird schwarz */
+        }
+
+        .image-container img {
+            width: 100%; /* Das Bild nimmt den gesamten Bildschirm ein */
+            height: auto;
+        }
+
+        /* Pulsierendes Bild über dem ow Bild */
+        .pulse-image {
+            position: absolute;
+            top: 2; /* Position des pulsierenden Bildes */
+            width: 400px; /* Größe des pulsierenden Bildes */
+            height: auto;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* Pulsierender Effekt für das Bild */
+        @keyframes pulse {
+            0% {
+                opacity: 0;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="javascript:history.back()" class="back-button">Zurück</a>
+
+    <!-- Pulsierendes Bild "images/owo.jpg" -->
+    <div class="pulse-image">
+        <img src="images/owo.jpg" alt="Pulsierendes Bild">
+    </div>
+
+    <!-- Großes Bild "images/ow.jpg" -->
+    <div class="image-container">
+        <img src="images/ow.jpg" alt="Ow Image">
+    </div>
+
+</body>
+</html>

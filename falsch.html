@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FALSCH! HAHAHAH</title>
+    <link rel="icon" href="favicon/favicon.ico" type="image/x-icon">
+    <style>
+        @font-face {
+            font-family: 'Windows95Font';
+            src: url('fonts/W95FA.otf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Windows95Font', sans-serif;
+            background-color: #000;
+            color: #640d0d;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        h2 {
+            font-size: 4em;
+            margin-bottom: 40px;
+        }
+
+        .interest-section {
+            margin-top: 60px;
+        }
+
+        .gif-links {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 30px;
+        }
+
+        .gif-links a img {
+            width: 180px;
+            height: auto;
+            border: 5px solid #640d0d; /* Roter Rand um die GIFs */
+            transition: all 0.3s ease; /* Smooth Transition für den Hover-Effekt */
+        }
+
+        /* Hover-Effekt für die GIF-Buttons */
+        .gif-links a:hover img {
+            border-color: rgba(100, 13, 13, 0.5); /* Leicht transparenter roter Rand */
+            opacity: 0.8; /* Reduzierte Opazität für den Hover-Effekt */
+        }
+
+        /* Stil für den "FALSCH!" Text in einer Box */
+        .error-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 7em; /* Größerer Text */
+            color: #ff0000; /* Rote Schrift */
+            font-weight: bold;
+            padding: 20px;
+            background-color: #000; /* Schwarzer Hintergrund */
+            border: 5px solid #640d0d; /* Roter Rand */
+            z-index: 1000; /* Anfangs über allen anderen Elementen */
+            opacity: 1;
+            transition: opacity 1s ease-out, z-index 0s 1s; /* Fade-out Effekt und Verzögerung für den z-index */
+        }
+
+        @media (max-width: 600px) {
+            h2 {
+                font-size: 2.5em;
+            }
+            .gif-links a img {
+                width: 120px;
+            }
+        }
+    </style>
+    
+</head>
+<body>
+    <!-- FALSCH! Nachricht, die über allem liegt -->
+    <div class="error-message" id="error-message">FALSCH! GAH! Versuche es erneut...</div>
+
+    <main>
+        <h2>Düsterste Ronja... ich habe diese Website für DICH gemacht.</h2>
+
+        <div class="interest-section">
+            <h2>Interesse?</h2>
+            <div class="gif-links">
+                <a href="flee.html"><img src="gifs/flee.gif" alt="Flee"></a>
+                <a href="enter.html"><img src="gifs/enter.gif" alt="Enter"></a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Funktion zum Ausblenden der "FALSCH!" Nachricht nach 1,5 Sekunden und z-index nach Fade-out setzen
+        setTimeout(function() {
+            const errorMessage = document.getElementById('error-message');
+            errorMessage.style.opacity = '0'; // Verblasst die Nachricht
+            errorMessage.style.zIndex = '-1'; // Setzt den z-index nach dem Fade-Out
+        }, 1500); // 1,5 Sekunden Verzögerung (nach der Verzögerung wird der Fade-out gestartet)
+    </script>
+</body>
+</html>

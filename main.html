@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FÜR RONJA</title>
+    <link rel="icon" href="favicon/favicon.ico" type="image/x-icon">
+    <style>
+        @font-face {
+            font-family: 'Windows95Font';
+            src: url('fonts/W95FA.otf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Windows95Font', sans-serif;
+            background-color: #000;
+            color: #640d0d;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        h2 {
+            font-size: 4em;
+            margin-bottom: 40px;
+        }
+
+        .interest-section {
+            margin-top: 60px;
+        }
+
+        .gif-links {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 30px;
+        }
+
+        .gif-links a img {
+            width: 180px;
+            height: auto;
+            border: 5px solid #640d0d; /* Roter Rand um die GIFs */
+            transition: all 0.3s ease; /* Smooth Transition für den Hover-Effekt */
+        }
+
+        /* Hover-Effekt für die GIF-Buttons */
+        .gif-links a:hover img {
+            border-color: rgba(100, 13, 13, 0.5); /* Leicht transparenter roter Rand */
+            opacity: 0.8; /* Reduzierte Opazität für den Hover-Effekt */
+        }
+
+        @media (max-width: 600px) {
+            h2 {
+                font-size: 2.5em;
+            }
+            .gif-links a img {
+                width: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h2>Düsterste Ronja... ich habe diese Website für DICH gemacht.</h2>
+
+        <div class="interest-section">
+            <h2>Interesse?</h2>
+            <div class="gif-links">
+                <a href="flee.html"><img src="gifs/flee.gif" alt="Flee"></a>
+                <a href="enter.html"><img src="gifs/enter.gif" alt="Enter"></a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

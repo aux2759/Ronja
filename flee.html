@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEIN NEIN NEIN NEIN NEIN NEIN</title>
+    <link rel="icon" href="favicon/favicon.ico" type="image/x-icon">
+    <style>
+        @font-face {
+            font-family: 'Windows95Font';
+            src: url('fonts/W95FA.otf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Windows95Font';
+            background-color: #000;
+            color: #640d0d;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+        }
+
+        /* Das Bild rotinhell.jpg über der Fragebox platzieren */
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 80%;
+            height: 40%; /* Höhe des Hintergrundbildes anpassen */
+            background: url('images/rotinhell.jpg') no-repeat center center;
+            background-size: cover;
+            z-index: -1; /* Bild hinter den Boxen und Text setzen */
+        }
+
+        /* Die Textbox (question-box) anpassen */
+        .question-box {
+            font-size: 2.8em;
+            padding: 50px 120px;
+            border: 3px solid #640d0d;
+            background-color: transparent;
+            margin-bottom: 60px;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            max-width: 800px;
+            background: 
+                url('gifs/walking.gif') no-repeat left center, 
+                url('gifs/walking.gif') no-repeat right center;
+            background-size: 50px;
+            background-position: 5% center, 95% center;
+        }
+
+        .bottom-blood {
+            position: absolute;
+            bottom: -35px;
+            left: 0;
+            width: 100%;
+            height: 35px;
+            background: url('gifs/blood.gif') no-repeat center center;
+            background-size: cover;
+        }
+
+        /* Button-Styling */
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 2.5em;
+            color: #640d0d;
+            border: 3px solid #640d0d;
+            background-color: transparent;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background-color: #640d0d98;
+            color: rgb(0, 0, 0); /* Textfarbe wird weiß */
+        }
+        @media (max-width: 600px) {
+            .title {
+                font-size: 3em;
+            }
+
+            .question-box {
+                font-size: 2.3em;
+                padding: 45px 100px;
+            }
+
+            .btn {
+                font-size: 2.1em;
+                padding: 8px 15px;
+            }
+        }
+
+        /* Popup */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border: 3px solid #640d0d;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .popup img {
+            width: 700px;
+            height: auto;
+            display: block;
+            position: relative;
+        }
+
+        .popup .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            background: white;
+            border: 2px solid #640d0d;
+            padding: 5px 10px;
+            border-radius: 5px;
+            z-index: 1001;
+        }
+        .popup .image-link {
+            display: block;
+            width: 100%;
+            height: 50%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hintergrundbild -->
+    <div class="background-image"></div>
+
+    <!-- Fragebox -->
+    <div class="question-box">
+        HEY!!! ...ich glaube... DU solltest es probieren...
+    </div>
+
+    <!-- Button für Weiterleitung -->
+    <div class="button-container">
+        <a href="main.html" class="btn">Ja... okay!</a>
+        <a href="hotvamps.html" class="image-link"></a>
+    </div>
+
+    <!-- Popup -->
+    <div class="popup" id="popup-ad">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <div style="position: relative;">
+            <img src="images/ad3.jpg" alt="Werbung">
+            <a href="hotvamps.html" class="image-link"></a>
+        </div>
+    </div>
+
+    <script>
+        function showPopup() {
+            document.getElementById("popup-ad").style.display = "block";
+        }
+
+        function closePopup() {
+            document.getElementById("popup-ad").style.display = "none";
+        }
+
+        // Zeigt das Popup nach 17 Sekunden an
+        setTimeout(showPopup, 17000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Richtig!</title>
+    <link rel="icon" href="favicon/favicon.ico" type="image/x-icon">
+    <style>
+        @font-face {
+            font-family: 'Windows95Font';
+            src: url('fonts/W95FA.otf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+    font-family: 'Windows95Font', sans-serif;
+    background-color: #000;
+    color: #ff0000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('gifs/bath.gif') center/cover no-repeat;
+    opacity: 0.2; /* Adjust transparency (0 = fully transparent, 1 = fully visible) */
+    z-index: -1; /* Moves background behind content */
+}
+
+
+        .message {
+            font-size: 3.7em;
+            font-weight: bold;
+            padding: 20px;
+            width: auto;
+            margin-bottom: 50px;
+            border: 5px solid #640d0d;
+        }
+
+        .container {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 1190px; /* Gesamtbreite der Box mit 1,7x Skalierung (700px * 1.7) */
+            height: auto; /* Höhe der Box bleibt unverändert */
+            border: 8px solid #640d0d; /* Roter Rand um die Box mit 1,7x Skalierung (5px * 1.7) */
+            padding: 34px; /* Padding der Box mit 1,7x Skalierung (20px * 1.7) */
+            margin-bottom: 20px; /* Abstand nach unten für das "Continue?"-Feld */
+        }
+
+        .gif-left, .gif-right {
+            width: 255px; /* Größe der GIFs mit 1,7x Skalierung (150px * 1.7) */
+            height: auto;
+        }
+
+        .image-center {
+            width: 510px; /* Größe des zentralen Bildes mit 1,7x Skalierung (300px * 1.7) */
+            height: auto;
+        }
+
+        .continue-message {
+            font-size: 4em;
+            font-weight: bold;
+            color: #640d0d; /* Dunkelrote Schrift */
+            padding: 15px;
+            margin-top: 40px;
+            width: auto;
+            border: 5px solid #640d0d;
+            text-decoration: none;
+        }
+
+        .continue-message:hover {
+            background-color: #640d0d98;
+            color: rgb(0, 0, 0); /* Textfarbe wird weiß */
+            
+        }
+        .mmmm {
+    color: #640d0d; /* Dunkelrot */
+}
+
+.richtig {
+    color: #ff0000; /* Helles Rot */
+}
+.back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 2em;
+            font-family: 'Windows95Font';
+            padding: 10px 20px;
+            color: #640d0d;
+            border: 3px solid #640d0d;
+            text-decoration: none;
+            background-color: transparent;
+        }
+
+        .back-button:hover {
+            background-color: #640d0d98;
+            color: rgb(0, 0, 0); /* Textfarbe wird schwarz */
+        }
+    </style>
+</head>
+<body>
+    <a href="javascript:history.back()" class="back-button">Zurück</a>
+    <div class="message">
+        <span class="mmmm">...Mmmm...</span> <span class="richtig">RICHTIG!!</span> <span class="mmmm">...ohhhh...
+    </div>
+
+    <!-- Container für das Bild und die GIFs -->
+    <div class="container">
+        <!-- Links und rechts vom Bild das Bat GIF -->
+        <img src="gifs/bat.gif" alt="Bat GIF" class="gif-left">
+        <img src="images/continute.jpg" alt="Continue" class="image-center">
+        <img src="gifs/bat.gif" alt="Bat GIF" class="gif-right">
+    </div>
+
+    <a href="frage2.html" class="continue-message">Continue?</a>
+
+</body>
+</html>

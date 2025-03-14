@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hot Vamps</title>
+    <link rel="icon" href="favicon/favicon.ico" type="image/x-icon">
+    <style>
+        @font-face {
+            font-family: 'Windows95Font';
+            src: url('fonts/W95FA.otf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Windows95Font', sans-serif;
+            background-color: #000;
+            color: #640d0d;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            position: relative;
+        }
+
+        .message {
+            font-size: 2.5em;
+            font-weight: bold;
+            padding: 15px;
+            width: auto;
+            margin-bottom: 20px;
+            border: 5px solid #640d0d;
+            background-color: rgba(0, 0, 0, 0.8); /* Leicht transparenter Hintergrund */
+            color: #640d0d;
+        }
+
+        .image-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .side-text {
+            font-size: 2em;
+            color: #640d0d;
+        }
+
+        .image-container {
+            border: 8px solid #640d0d; /* Roter Rand */
+            padding: 10px;
+        }
+
+        .image-container img {
+            width: 500px; /* Bildgröße anpassen */
+            height: auto;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+            gap: 40px; /* Abstand zwischen Previous und Next */
+            margin-top: 20px;
+        }
+
+        .nav-button {
+            border: 4px solid #640d0d;
+            padding: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            border-color: rgba(100, 13, 13, 0.5);
+            opacity: 0.8; /* Reduzierte Opazität für den Hover-Effekt */
+        }
+
+        .nav-button img {
+            width: 100px; /* Größe der GIFs */
+            height: auto;
+            cursor: pointer;
+            display: block;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 2em;
+            padding: 10px 20px;
+            color: #640d0d;
+            border: 3px solid #640d0d;
+            text-decoration: none;
+            background-color: transparent;
+        }
+
+        .answer-option:hover,
+        .back-button:hover {
+            background-color: #640d0d98;
+            color: rgb(0, 0, 0); /* Textfarbe wird schwarz */
+        }
+    </style>
+    <script>
+        let currentImage = 1;
+        const totalImages = 10; // Anzahl der Vamp-Bilder (anpassen)
+
+        function showImage(index) {
+            if (index < 1) {
+                currentImage = totalImages;
+            } else if (index > totalImages) {
+                currentImage = 1;
+            } else {
+                currentImage = index;
+            }
+            document.getElementById("vampImage").src = `images/vamp${currentImage}.jpg`;
+        }
+
+        function nextImage() {
+            showImage(currentImage + 1);
+        }
+
+        function prevImage() {
+            showImage(currentImage - 1);
+        }
+    </script>
+</head>
+<body>
+
+    <a href="javascript:history.back()" class="back-button">Zurück</a>
+
+    <!-- Textbox über dem Bild -->
+    <div class="message">HEIßE Kreaturen in DEINER Nähe... (5000 km Radius)</div>
+
+    <!-- Bild mit "ohhhh" und "ahhhh" links/rechts -->
+    <div class="image-wrapper">
+        <div class="side-text">...ohhhh...</div>
+        <div class="image-container">
+            <img id="vampImage" src="images/vamp1.jpg" alt="Hot Vamp">
+        </div>
+        <div class="side-text">...ahhhh...</div>
+    </div>
+
+    <!-- Navigation mit separaten Rändern -->
+    <div class="navigation">
+        <div class="nav-button">
+            <img src="gifs/previous.gif" alt="Previous" onclick="prevImage()">
+        </div>
+        <div class="nav-button">
+            <img src="gifs/next.gif" alt="Next" onclick="nextImage()">
+        </div>
+    </div>
+
+</body>
+</html>

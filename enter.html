@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KOMME... HINEIN</title>
+    <link rel="icon" href="favicon/favicon.ico" type="image/x-icon">
+    <style>
+        @font-face {
+            font-family: 'Windows95Font';
+            src: url('fonts/W95FA.otf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Windows95Font', sans-serif;
+            background-color: #000;
+            color: #640d0d;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 0;
+            text-align: center;
+            overflow: hidden; /* Verhindert Scrollen */
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 800px; /* Maximale Breite der Textbox */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        /* Textbox mit fester Höhe und festen Dimensionen */
+        .text-box {
+            font-size: 3em; /* Feste Schriftgröße */
+            padding: 40px; /* Feste Polsterung */
+            border: 3px solid #640d0d;
+            background: transparent;
+            z-index: 1;
+            box-sizing: border-box;
+            height: auto; /* Automatische Höhe basierend auf dem Inhalt */
+            min-height: 200px; /* Mindesthöhe der Box */
+            position: relative;
+        }
+
+        /* GIFs links und rechts vom Text */
+        .text-box::before,
+        .text-box::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 100px; /* Vergrößertes GIF */
+            height: 100px; /* Vergrößertes GIF */
+            background: url('gifs/skull.gif') no-repeat center center;
+            background-size: cover; /* GIF wird über die gesamte Breite des Containers gestreckt */
+            z-index: -1; /* GIF bleibt hinter dem Text */
+        }
+
+        .text-box::before {
+            left: -110px; /* Position links vom Text */
+            transform: translateY(-50%);
+        }
+
+        .text-box::after {
+            right: -110px; /* Position rechts vom Text */
+            transform: translateY(-50%);
+        }
+
+        /* GIF, das über der Textbox liegt */
+        .container::before {
+            content: ''; /* Leeres Pseudo-Element */
+            position: absolute;
+            top: -60px; /* GIF bleibt am oberen Rand */
+            left: 0;
+            right: 0;
+            height: 60px; /* Höhe des GIFs */
+            background: url('gifs/fire.gif') no-repeat center bottom;
+            background-size: cover; /* GIF wird über die gesamte Breite des Containers gestreckt */
+            z-index: -1; /* GIF bleibt hinter dem Text */
+        }
+
+        .button-link {
+            display: inline-block;
+            font-size: 2.5em; /* Feste Schriftgröße für den Button */
+            padding: 25px 50px; /* Feste Polsterung */
+            color: #640d0d;
+            border: 3px solid #640d0d;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+
+        /* Zurück-Button in der oberen linken Ecke */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 2em;
+            padding: 10px 20px;
+            color: #640d0d;
+            border: 3px solid #640d0d;
+            text-decoration: none;
+            background-color: transparent;
+        }
+        .button-link:hover,
+        .back-button:hover {
+            background-color: #640d0d98;
+            color: rgb(0, 0, 0); /* Textfarbe wird weiß */
+        }
+        @media (max-width: 600px) {
+            .text-box {
+                font-size: 2.5em; /* Kleinere Schriftgröße auf kleinen Geräten */
+            }
+            .button-link {
+                font-size: 2.5em;
+                padding: 20px 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text-box">
+            Ich habe fünf Fragen vorbereitet, die DU hintereinander richtig beantworten musst, um an ein Ziel zu kommen. Wenn DU sie richtig beantwortest, wirst DU belohnt. Wenn DU sie falsch beantwortest, dann, sagen wir's mal so... wirst DU nicht belohnt.
+        </div>
+    </div>
+    <a href="frage1.html" class="button-link">Bereit?</a>
+    <!-- Zurück-Button oben links -->
+    <a href="main.html" class="back-button">Zurück</a>
+</body>
+</html>
